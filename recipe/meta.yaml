@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/dtoolai-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/dtoolai-{{ version }}.tar.gz
   sha256: eb66acdee560d18242cbdfcc5aa9d078021c84bb13677fb1574c2ad06e71b3ac
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - dtoolai-provenance = dtoolai.utils:print_provenance
@@ -21,13 +21,13 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - click
     - dtool_http
     - dtoolcore
     - pillow
-    - python >=3.6
+    - python >={{ python_min }}
     - pytorch
     - torchvision
 
@@ -40,6 +40,7 @@ test:
     - create-image-dataset-from-dirtree --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: http://github.com/JIC-CSB/dtoolai
