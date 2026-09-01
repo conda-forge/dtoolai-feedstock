@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: dtoolai
-  version: "0.2.0"
+  version: 0.2.0
 
 package:
   name: ${{ name|lower }}
@@ -24,7 +24,7 @@ build:
 requirements:
   host:
     - pip
-    - python ${{ python_min }}
+    - python ${{ python_min }}.*
     - setuptools
   run:
     - click
@@ -46,7 +46,7 @@ tests:
   - requirements:
       run:
         - pip
-        - python ${{ python_min }}
+        - python ${{ python_min }}.*
     script:
       - dtoolai-provenance --help
       - create-image-dataset-from-dirtree --help
@@ -55,8 +55,7 @@ about:
   license: MIT
   license_file: LICENSE
   summary: Dtool AI reproducible AI library
-  description: |
-    dtoolAI is a library for supporting reproducible deep learning.
+  description: dtoolAI is a library for supporting reproducible deep learning.
   homepage: http://github.com/JIC-CSB/dtoolai
   repository: http://github.com/JIC-CSB/dtoolai
   documentation: http://github.com/JIC-CSB/dtoolai
